@@ -61,7 +61,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage('60'))
         if msg == '吃啥' :
             restaurant = ('翁媽媽','宿餐','學餐','陳記','深海鮮')
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(restaurant[random.randint(0,5)]))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(restaurant[random.randint(0,4)]))
         GPT_answer = GPT_response(msg)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
