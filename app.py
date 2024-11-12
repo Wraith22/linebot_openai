@@ -14,6 +14,7 @@ import datetime
 import openai
 import time
 import traceback
+import random
 #======python的函數庫==========
 
 app = Flask(__name__)
@@ -58,6 +59,9 @@ def handle_message(event):
     try:
         if msg == '猜猜我幾歲':
             line_bot_api.reply_message(event.reply_token, TextSendMessage('60'))
+        if msg == '吃啥' :
+            restaurant = ('翁媽媽','宿餐','學餐','陳記','深海鮮')
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(restaurant[random.randint(0,5)]))
         GPT_answer = GPT_response(msg)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
